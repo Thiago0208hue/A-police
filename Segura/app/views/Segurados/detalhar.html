@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set title:'Detalhamento de Segurado' /}
+
+<h1>Detalhamento</h1>
+<hr />
+
+<p>Nome: ${segurado.nome}</p>
+<p>CPF: ${segurado.cpf}</p>
+<p>Email: ${segurado.email}</p>
+<p>Telefone: ${segurado.telefone}</p>
+
+<a href="@{Segurados.listar}" class="btn btn-primary">Retornar</a>

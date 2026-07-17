@@ -1,0 +1,24 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de Segurados' /}
+
+<form action="@{Segurados.listar}">
+	<input type="text" name="termo" value="${termo}" placeholder="Informe o nome ou email" />
+	<input type="submit" value="Buscar" />
+</form>
+
+<a href="@{Segurados.form}">Novo Segurado</a>
+
+#{list items:segurados, as:'s'}
+	<p>Nome: ${s.nome}</p>
+	<p>CPF: ${s.cpf}</p>
+	<p>Email: ${s.email}</p>
+	<a href="@{Segurados.editar(s.id)}" class="btn btn-secondary">Editar</a> |
+	<a href="@{Segurados.remover(s.id)}" class="btn btn-danger">Remover</a> |
+	<a href="@{Segurados.detalhar(s.id)}" class="btn btn-primary">Detalhar</a>
+	<hr />
+#{/list}
+#{else}
+	<p>Nenhum segurado cadastrado.</p>
+#{/else}
+
+<a href="@{Seguros.listar}">Voltar para Apólices</a>

@@ -1,0 +1,21 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de Apólices' /}
+
+<form action="@{Seguros.listar}">
+	<input type="text" name="termo" value="${termo}" placeholder="Nome do segurado, placa ou modelo" />
+	<input type="submit" value="Buscar" />
+</form>
+
+<a href="@{Seguros.form}">Nova Apólice</a>
+
+#{list items:seguros, as:'s'}
+	<p>Segurado: ${s.segurado?.nome ?: 'Não informado'}</p>
+	<p>Veículo: ${s.modelo} — Placa: ${s.placa}</p>
+	<a href="@{Seguros.editar(s.id)}" class="btn btn-secondary">Editar</a> |
+	<a href="@{Seguros.remover(s.id)}" class="btn btn-danger">Remover</a> |
+	<a href="@{Seguros.detalhar(s.id)}" class="btn btn-primary">Detalhar</a>
+	<hr />
+#{/list}
+#{else}
+	<p>Nenhuma apólice cadastrada.</p>
+#{/else}
