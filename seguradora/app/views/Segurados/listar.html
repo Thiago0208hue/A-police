@@ -1,0 +1,14 @@
+#{extends 'main.html' /}
+#{set title:'Segurados' /}
+
+<a href="@{Segurados.form}">Novo Segurado</a>
+
+#{list items:segurados, as:'s'}
+	<p>${s.nome} — CPF: ${s.cpf} — Email: ${s.email}</p>
+	<hr />
+#{/list}
+#{else}
+	<p>Nenhum segurado cadastrado.</p>
+#{/else}
+
+<a href="@{Seguros.listar}">Voltar para Apólices</a>
